@@ -1,0 +1,12 @@
+@use "utils";
+.appContainer {
+  position: relative;
+  display: flex;
+  max-width: 2000px;
+  margin: 0 auto;
+  .content {
+    @include utils.flex-column();
+    flex: 1;
+    padding-inline: utils.rem(18);
+  }
+}

@@ -1,0 +1,33 @@
+<div class="sidebar-container" [ngClass]="{ expanded: sideNavExpanded() }">
+  <div class="logo-container">
+    @if(sideNavExpanded()){
+    <span class="logo">Van Sales</span>
+    }@else{
+    <span class="logo">V</span>
+    }
+  </div>
+  <nav class="nav">
+    <ul class="nav-list">
+      @for(nav of navData; track nav.label){
+      <li class="list-item">
+        <a
+          class="nav-link"
+          [routerLink]="nav.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <fa-icon icon="{{ nav.icon }}" class="icon" />
+          @if(sideNavExpanded()){
+          <span class="label">{{ nav.label }}</span>
+          }
+        </a>
+        <app-sublevel-menu
+          [collapsed]="sideNavExpanded()"
+          [expanded]="nav.expanded"
+          [data]="nav"
+        />
+      </li>
+      }
+    </ul>
+  </nav>
+</div>

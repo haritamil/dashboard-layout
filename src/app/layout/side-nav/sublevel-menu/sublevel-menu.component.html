@@ -1,0 +1,23 @@
+@if(data().items){
+<ul class="nav-list">
+  @for(item of data().items; track item.label){
+  <li class="list-item">
+    <a
+      class="nav-link"
+      [routerLink]="item.routeLink"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <fa-icon icon="circle" class="icon" />
+      <span class="label">{{ item.label }}</span>
+      @if(item.items && collapsed()){
+      <fa-icon
+        icon="{{ !item.expanded ? 'angle-right' : 'angle-down' }}"
+        class="icon"
+      />
+      }
+    </a>
+  </li>
+  }
+</ul>
+}

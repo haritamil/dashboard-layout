@@ -1,0 +1,9 @@
+@use "utils";
+.header-container {
+  @include utils.flex-row($align: center);
+  height: 66px;
+
+  .toggle {
+    font-size: utils.rem(20);
+  }
+}

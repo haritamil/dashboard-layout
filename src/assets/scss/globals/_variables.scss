@@ -1,0 +1,7 @@
+@use "../utils" as u;
+
+$white: #ffffff;
+$black: #000000;
+$linear-gradient: linear-gradient(180deg, #3455cb 0%, #203890 100%);
+$hover-gradient: linear-gradient(to right, #ff7373, #ff6968);
+$sidenav-width: u.rem(16);
