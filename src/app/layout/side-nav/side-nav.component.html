@@ -1,15 +1,37 @@
 <div class="sidebar-container" [ngClass]="{ expanded: sideNavExpanded() }">
   <div class="logo-container">
     @if(sideNavExpanded()){
-    <span class="logo">Van Sales</span>
+    <span class="logo" @fadeInOut>Van Sales</span>
     }@else{
     <span class="logo">V</span>
     }
   </div>
   <nav class="nav">
     <ul class="nav-list">
+      <!-- For single & multiple level navigation -->
       @for(nav of navData; track nav.label){
       <li class="list-item">
+        <!-- For Nested Routes -->
+        @if(nav.items && nav.items.length > 0){
+        <a class="nav-link" (click)="handleNavClick(nav)">
+          <fa-icon icon="{{ nav.icon }}" class="icon" />
+          @if(sideNavExpanded()){
+          <span class="label" @fadeInOut>{{ nav.label }}</span>
+          <fa-icon
+            icon="{{ !nav.expanded ? 'angle-right' : 'angle-down' }}"
+            class="icon"
+          />
+          }
+        </a>
+        @if(nav.expanded && sideNavExpanded()){
+        <app-sublevel-menu
+          [collapsed]="sideNavExpanded()"
+          [expanded]="nav.expanded"
+          [data]="nav"
+        />} }
+
+        <!-- For single route -->
+        @else{
         <a
           class="nav-link"
           [routerLink]="nav.routeLink"
@@ -18,14 +40,10 @@
         >
           <fa-icon icon="{{ nav.icon }}" class="icon" />
           @if(sideNavExpanded()){
-          <span class="label">{{ nav.label }}</span>
+          <span class="label" @fadeInOut>{{ nav.label }}</span>
           }
         </a>
-        <app-sublevel-menu
-          [collapsed]="sideNavExpanded()"
-          [expanded]="nav.expanded"
-          [data]="nav"
-        />
+        }
       </li>
       }
     </ul>

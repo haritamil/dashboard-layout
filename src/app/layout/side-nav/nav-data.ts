@@ -21,6 +21,7 @@ export const sideNavData: INavData[] = [
     routeLink: 'coupens',
     icon: 'tags',
     label: 'Coupens',
+    expanded: false,
     items: [
       {
         routeLink: 'coupens/list',
