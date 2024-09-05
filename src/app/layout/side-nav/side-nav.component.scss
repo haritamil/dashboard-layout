@@ -3,38 +3,29 @@
 @use "utils";
 
 .sidebar-container {
-  width: utils.rem(88);
+  width: utils.rem(80);
   background: v.$linear-gradient;
   max-height: 100vh;
   height: 100dvh;
   transition: width 0.5s ease;
   @include utils.flex-column();
+  overflow: auto;
+  scrollbar-width: none;
   &.expanded {
     width: utils.rem(256);
-    // .nav{
-    //   .nav-list{
-    //     .list-item{
-    //       .nav-link{
-    //         .label{
-    //           display: inline;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
   }
 
   .logo-container {
     text-align: center;
     padding-inline: utils.rem(16);
     padding-block: utils.rem(32);
-    font-size: utils.rem(24);
     color: v.$white;
     font-weight: t.$font-900;
     letter-spacing: 1.2;
 
     .logo {
       text-wrap: nowrap;
+      font-size: utils.rem(24);
     }
   }
 
@@ -44,33 +35,39 @@
     .nav-list {
       @include utils.flex-column();
       gap: utils.rem(16);
+      padding-inline: utils.rem(16);
 
       .list-item {
         text-align: center;
-        padding-inline: utils.rem(16);
         width: 100%;
 
         .nav-link {
           position: relative;
           @include utils.flex-row($align: center);
-          column-gap: utils.rem(16);
-          padding-inline: utils.rem(16);
-          padding-block: utils.rem(10);
           border-radius: 12px;
           z-index: 1;
+          height: 3rem;
 
-          .icon {
+          .icon,
+          .angle-icon {
             color: v.$white;
+            font-size: 22px;
+            width: 2rem;
+            min-width: 2rem;
+            margin: 0 0.5rem;
+            text-align: center;
+          }
+
+          .angle-icon {
             font-size: 20px;
-            flex-shrink: 0;
+            margin: auto 0.5rem auto auto;
           }
 
           .label {
             font-size: utils.rem(18);
             color: v.$white;
             font-weight: t.$font-500;
-            text-wrap: nowrap;
-            transition-delay: 5s;
+            margin-left: 0.5rem;
           }
 
           &:hover::before,

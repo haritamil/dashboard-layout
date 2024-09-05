@@ -35,11 +35,33 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
         animate('350ms', style({ opacity: 0 })),
       ]),
     ]),
+
+    trigger('delayedText', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s ease', style({ opacity: 1 })),
+      ]),
+    ]),
   ],
 })
 export class SideNavComponent {
   navData = sideNavData;
   sideNavExpanded = input.required<boolean>();
+  multiple: boolean = false;
 
-  handleNavClick(data: INavData) {}
+  handleNavClick(data: INavData) {
+    this.shrinkItems(data);
+    data.expanded = !data.expanded;
+    console.log('this.navData', this.navData);
+  }
+
+  shrinkItems(item: INavData): void {
+    if (!this.multiple) {
+      for (let modelItem of this.navData) {
+        if (item !== modelItem && modelItem.expanded) {
+          modelItem.expanded = false;
+        }
+      }
+    }
+  }
 }

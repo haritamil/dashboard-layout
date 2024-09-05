@@ -1,9 +1,9 @@
 <div class="sidebar-container" [ngClass]="{ expanded: sideNavExpanded() }">
   <div class="logo-container">
     @if(sideNavExpanded()){
-    <span class="logo" @fadeInOut>Van Sales</span>
+    <span class="logo" @delayedText>Van Sales</span>
     }@else{
-    <span class="logo">V</span>
+    <span class="logo" @delayedText>V</span>
     }
   </div>
   <nav class="nav">
@@ -19,15 +19,16 @@
           <span class="label" @fadeInOut>{{ nav.label }}</span>
           <fa-icon
             icon="{{ !nav.expanded ? 'angle-right' : 'angle-down' }}"
-            class="icon"
+            class="angle-icon"
           />
           }
         </a>
-        @if(nav.expanded && sideNavExpanded()){
+        @if(sideNavExpanded() && nav.items.length > 0){
         <app-sublevel-menu
           [collapsed]="sideNavExpanded()"
           [expanded]="nav.expanded"
           [data]="nav"
+          [multiple]="multiple"
         />} }
 
         <!-- For single route -->
@@ -37,6 +38,7 @@
           [routerLink]="nav.routeLink"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
+          (click)="shrinkItems(nav)"
         >
           <fa-icon icon="{{ nav.icon }}" class="icon" />
           @if(sideNavExpanded()){

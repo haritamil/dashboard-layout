@@ -4,8 +4,7 @@
 
 .sub-list {
   @include utils.flex-column();
-  margin-top: utils.rem(8);
-  gap: utils.rem(8);
+  margin-left: 10px;
 
   .sub-list-item {
     text-align: center;
@@ -14,25 +13,22 @@
     .sub-nav-link {
       position: relative;
       @include utils.flex-row($align: center);
-      column-gap: utils.rem(16);
-      padding-inline: utils.rem(16);
       padding-block: utils.rem(10);
       border-radius: 12px;
       z-index: 1;
+      height: 3rem;
 
       .sub-icon,
       .sub-icon-circle {
         color: v.$white;
-        font-size: 20px;
-        flex-shrink: 0;
-      }
-
-      .sub-icon-circle {
-        font-size: 10px;
+        font-size: 4px;
+        width: 2rem;
+        min-width: 2rem;
+        margin: 0 0.5rem;
+        text-align: center;
       }
 
       .sub-label {
-        font-size: utils.rem(16);
         color: v.$white;
         font-weight: t.$font-500;
       }

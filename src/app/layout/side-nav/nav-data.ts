@@ -33,4 +33,20 @@ export const sideNavData: INavData[] = [
       },
     ],
   },
+  {
+    routeLink: 'coupens',
+    icon: 'tags',
+    label: 'Check',
+    expanded: false,
+    items: [
+      {
+        routeLink: 'coupens/list',
+        label: 'Coupens List',
+      },
+      {
+        routeLink: 'coupens/create',
+        label: 'Create Coupens',
+      },
+    ],
+  },
 ];
