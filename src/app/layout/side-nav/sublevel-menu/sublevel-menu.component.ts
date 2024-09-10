@@ -10,6 +10,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { fadeInout } from '../nav-helper';
 
 @Component({
   selector: 'app-sublevel-menu',
@@ -18,6 +19,7 @@ import {
   templateUrl: './sublevel-menu.component.html',
   styleUrl: './sublevel-menu.component.scss',
   animations: [
+    fadeInout,
     trigger('submenu', [
       state(
         'hidden',

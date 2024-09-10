@@ -8,5 +8,10 @@
     @include utils.flex-column();
     flex: 1;
     padding-inline: utils.rem(18);
+    margin-left: 0;
+    transition: margin-left 0.6s ease-in-out;
+    &.md-expanded {
+      margin-left: utils.rem(256);
+    }
   }
 }

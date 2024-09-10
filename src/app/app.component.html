@@ -1,8 +1,13 @@
 <div class="appContainer">
-  <app-side-nav [sideNavExpanded]="sideNavExpanded" />
-  <div class="content">
+  <app-side-nav [sideNavExpanded]="sideNavExpanded()" />
+  <div
+    class="content"
+    [ngClass]="{
+      'md-expanded': this.screenWidth <= 768 && this.sideNavExpanded()
+    }"
+  >
     <app-header
-      [sideNavExpanded]="sideNavExpanded"
+      [sideNavExpanded]="sideNavExpanded()"
       (onToggle)="toggleSideNav()"
     />
     <router-outlet />

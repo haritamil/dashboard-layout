@@ -13,7 +13,11 @@
       <li class="list-item">
         <!-- For Nested Routes -->
         @if(nav.items && nav.items.length > 0){
-        <a class="nav-link" (click)="handleNavClick(nav)">
+        <a
+          class="nav-link"
+          (click)="handleNavClick(nav)"
+          [ngClass]="getActiveClass(nav)"
+        >
           <fa-icon icon="{{ nav.icon }}" class="icon" />
           @if(sideNavExpanded()){
           <span class="label" @fadeInOut>{{ nav.label }}</span>

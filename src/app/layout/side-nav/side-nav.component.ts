@@ -1,7 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input, OnInit, effect } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { INavData, sideNavData } from './nav-data';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   trigger,
@@ -12,6 +12,7 @@ import {
   keyframes,
 } from '@angular/animations';
 import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
+import { fadeInout } from './nav-helper';
 
 @Component({
   selector: 'app-side-nav',
@@ -21,21 +22,12 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
     RouterModule,
     CommonModule,
     SublevelMenuComponent,
+    CommonModule,
   ],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.scss',
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('350ms', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate('350ms', style({ opacity: 0 })),
-      ]),
-    ]),
-
+    fadeInout,
     trigger('delayedText', [
       transition(':enter', [
         style({ opacity: 0 }),
@@ -44,14 +36,30 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
     ]),
   ],
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
   navData = sideNavData;
+  router = inject(Router);
   sideNavExpanded = input.required<boolean>();
   multiple: boolean = false;
 
+  constructor() {
+    effect(() => {
+      if (this.sideNavExpanded() === false) {
+        const index = this.navData.findIndex(
+          (x: INavData) => x.expanded === true
+        );
+        if (index !== -1) {
+          this.navData[index].expanded = false;
+        }
+      }
+    });
+  }
+
+  ngOnInit() {}
+
   handleNavClick(data: INavData) {
     this.shrinkItems(data);
-    data.expanded = !data.expanded;
+    data.expanded = this.sideNavExpanded() ? !data.expanded : false;
     console.log('this.navData', this.navData);
   }
 
@@ -63,5 +71,9 @@ export class SideNavComponent {
         }
       }
     }
+  }
+
+  getActiveClass(item: INavData) {
+    return this.router.url.includes(item.routeLink) ? 'active' : '';
   }
 }
