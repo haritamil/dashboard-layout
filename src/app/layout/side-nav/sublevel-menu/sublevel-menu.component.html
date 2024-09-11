@@ -21,8 +21,8 @@
 >
   @for(item of data().items; track item.label){
   <li class="sub-list-item">
-    @if(item.items){
-    <a class="sub-nav-link">
+    @if(item.items && item.items.length > 0){
+    <a class="sub-nav-link" (click)="handleClick(item)">
       <fa-icon icon="circle" class="sub-icon-circle" />
       @if(collapsed()){
       <span class="sub-label">{{ item.label }}</span>
@@ -38,7 +38,7 @@
     <app-sublevel-menu
       [collapsed]="collapsed()"
       [expanded]="item.expanded"
-      [data]="data()"
+      [data]="item"
       [multiple]="multiple()"
     />} } @else {
     <a

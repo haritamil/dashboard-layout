@@ -47,4 +47,19 @@ export class SublevelMenuComponent {
   collapsed = input.required<boolean>();
   expanded = input.required<boolean | undefined>();
   multiple = input(false);
+
+  handleClick(item: any): void {
+    let items = this.data()?.items;
+    console.log('items', items, item);
+    if (!this.multiple) {
+      if (items && items?.length > 0) {
+        for (let modelItem of items) {
+          if (item !== modelItem && modelItem.expanded) {
+            modelItem.expanded = false;
+          }
+        }
+      }
+    }
+    item.expanded = !item.expanded;
+  }
 }

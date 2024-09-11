@@ -26,6 +26,13 @@ export const sideNavData: INavData[] = [
       {
         routeLink: 'coupens/list',
         label: 'Coupens List',
+        expanded: false,
+        items: [
+          {
+            routeLink: 'coupens',
+            label: 'list 1',
+          },
+        ],
       },
       {
         routeLink: 'coupens/create',
@@ -33,20 +40,4 @@ export const sideNavData: INavData[] = [
       },
     ],
   },
-  // {
-  //   routeLink: 'coupens',
-  //   icon: 'tags',
-  //   label: 'Check',
-  //   expanded: false,
-  //   items: [
-  //     {
-  //       routeLink: 'coupens/list',
-  //       label: 'Coupens List',
-  //     },
-  //     {
-  //       routeLink: 'coupens/create',
-  //       label: 'Create Coupens',
-  //     },
-  //   ],
-  // },
 ];

@@ -1,5 +1,5 @@
 import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import {
   FaIconLibrary,
   FontAwesomeModule,
@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
     SideNavComponent,
     HeaderComponent,
     CommonModule,
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
