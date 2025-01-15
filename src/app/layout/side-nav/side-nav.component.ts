@@ -15,26 +15,25 @@ import { SublevelMenuComponent } from './sublevel-menu/sublevel-menu.component';
 import { fadeInout } from './nav-helper';
 
 @Component({
-  selector: 'app-side-nav',
-  standalone: true,
-  imports: [
-    FontAwesomeModule,
-    RouterModule,
-    CommonModule,
-    SublevelMenuComponent,
-    CommonModule,
-  ],
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss',
-  animations: [
-    fadeInout,
-    trigger('delayedText', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('1s ease', style({ opacity: 1 })),
-      ]),
-    ]),
-  ],
+    selector: 'app-side-nav',
+    imports: [
+        FontAwesomeModule,
+        RouterModule,
+        CommonModule,
+        SublevelMenuComponent,
+        CommonModule,
+    ],
+    templateUrl: './side-nav.component.html',
+    styleUrl: './side-nav.component.scss',
+    animations: [
+        fadeInout,
+        trigger('delayedText', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('1s ease', style({ opacity: 1 })),
+            ]),
+        ]),
+    ]
 })
 export class SideNavComponent implements OnInit {
   navData = sideNavData;

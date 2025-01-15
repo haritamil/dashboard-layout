@@ -13,34 +13,27 @@ import {
 import { fadeInout } from '../nav-helper';
 
 @Component({
-  selector: 'app-sublevel-menu',
-  standalone: true,
-  imports: [FontAwesomeModule, RouterModule, CommonModule],
-  templateUrl: './sublevel-menu.component.html',
-  styleUrl: './sublevel-menu.component.scss',
-  animations: [
-    fadeInout,
-    trigger('submenu', [
-      state(
-        'hidden',
-        style({
-          height: '0',
-          overflow: 'hidden',
-        })
-      ),
-      state(
-        'visible',
-        style({
-          height: '*',
-        })
-      ),
-      transition('visible <=> hidden', [
-        style({ overflow: 'hidden' }),
-        animate('{{transitionParams}}'),
-      ]),
-      transition('void => *', animate(0)),
-    ]),
-  ],
+    selector: 'app-sublevel-menu',
+    imports: [FontAwesomeModule, RouterModule, CommonModule],
+    templateUrl: './sublevel-menu.component.html',
+    styleUrl: './sublevel-menu.component.scss',
+    animations: [
+        fadeInout,
+        trigger('submenu', [
+            state('hidden', style({
+                height: '0',
+                overflow: 'hidden',
+            })),
+            state('visible', style({
+                height: '*',
+            })),
+            transition('visible <=> hidden', [
+                style({ overflow: 'hidden' }),
+                animate('{{transitionParams}}'),
+            ]),
+            transition('void => *', animate(0)),
+        ]),
+    ]
 })
 export class SublevelMenuComponent {
   data = input.required<INavData>();

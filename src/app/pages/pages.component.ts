@@ -3,11 +3,10 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HighlightDirective } from '../directives/highlight.directive';
 
 @Component({
-  selector: 'app-pages',
-  standalone: true,
-  imports: [RouterLink, HighlightDirective],
-  templateUrl: './pages.component.html',
-  styleUrl: './pages.component.scss',
+    selector: 'app-pages',
+    imports: [RouterLink, HighlightDirective],
+    templateUrl: './pages.component.html',
+    styleUrl: './pages.component.scss'
 })
 export class PagesComponent implements OnInit {
   // pageId = input.required<string>();

@@ -21,20 +21,19 @@ import { first, map, take, takeWhile, tap } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterOutlet,
-    FontAwesomeModule,
-    SideNavComponent,
-    HeaderComponent,
-    CommonModule,
-    RouterLink,
-    NumbersOnlyDirective,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        RouterOutlet,
+        FontAwesomeModule,
+        SideNavComponent,
+        HeaderComponent,
+        CommonModule,
+        RouterLink,
+        NumbersOnlyDirective,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'dashboard-layout';

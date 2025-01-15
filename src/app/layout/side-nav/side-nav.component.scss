@@ -6,6 +6,8 @@
   width: utils.rem(80);
   background: v.$linear-gradient;
   max-height: 100vh;
+  position: sticky;
+  top: 0;
   height: 100dvh;
   transition: width 0.5s ease, left 0.6s ease-in-out;
   @include utils.flex-column();
