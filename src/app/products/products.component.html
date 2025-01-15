@@ -1,1 +1,15 @@
 <p>products works!</p>
+
+<div class="container"></div>
+
+<div #trigger>
+  Trigger for defer @defer (on viewport(trigger)) {
+  <app-dashboard />
+  }@placeholder(minimum 2s) {
+  <span class="box">placeholder....</span>
+  }@loading(after 100ms; minimum 1s) {
+  <span class="box">loading....</span>
+  }@error {
+  <span class="box">ERROR</span>
+  }
+</div>

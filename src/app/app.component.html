@@ -1,4 +1,5 @@
 <div class="appContainer">
+  <span class="scroll-progress" [ngStyle]="{ width: progress() + '%' }"></span>
   <app-side-nav [sideNavExpanded]="sideNavExpanded()" />
   <div
     class="content"
@@ -10,7 +11,14 @@
       [sideNavExpanded]="sideNavExpanded()"
       (onToggle)="toggleSideNav()"
     />
-    <a routerLink="/pages/3">Go to a random page</a>
+    <input type="text" appNumbersOnly />
+    <!-- {{ mapCheck() }} -->
+    <a
+      [routerLink]="'/pages/3'"
+      [queryParams]="{ filter: false, sorting: false }"
+      [fragment]="'hero'"
+      >Go to a random page</a
+    >
     <router-outlet />
   </div>
 </div>

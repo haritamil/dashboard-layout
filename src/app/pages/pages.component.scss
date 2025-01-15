@@ -1,0 +1,19 @@
+:host {
+  scroll-behavior: smooth;
+
+  .first {
+    background-color: aqua;
+    color: black;
+    padding: 2rem;
+    transition: 0.5s all;
+  }
+
+  .hero {
+    background-color: palevioletred;
+    color: white;
+    padding: 2rem;
+    p {
+      font-size: 5rem;
+    }
+  }
+}

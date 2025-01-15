@@ -13,4 +13,12 @@
       margin-left: utils.rem(256);
     }
   }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    height: 4px;
+    background: palevioletred;
+    width: 0px;
+  }
 }
